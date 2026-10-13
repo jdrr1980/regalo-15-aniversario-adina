@@ -1,0 +1,3 @@
+# Bloqueo total para todos los rastreadores y motores de busqueda
+User-agent: *
+Disallow: /
