@@ -15,7 +15,7 @@ export const LOVE_LETTER = {
  * Número de teléfono móvil de Juan Diego (con prefijo internacional ej. 34600000000).
  * Se vincula directamente al botón de confirmación en WhatsApp.
  */
-export const JUAN_DIEGO_PHONE = ''
+export const JUAN_DIEGO_PHONE = '34654827357'
 
 /**
  * Etapas de la historia con pistas narrativas para desbloquear el regalo
