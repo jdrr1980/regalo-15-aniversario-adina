@@ -31,27 +31,30 @@ export const LockScreen: React.FC<LockScreenProps> = ({ onUnlock }) => {
     setIsSubmitting(true)
 
     try {
-      const cleanUser = username.trim().toLowerCase()
-      const cleanPass = password.trim()
+      const cleanUser = username.trim().toLowerCase().replace(/\s+/g, '')
+      const cleanPass = password.trim().replace(/[\/\-\s\.]/g, '')
 
-      // Comprobación de credenciales
-      if (cleanUser === 'jdyadina' && cleanPass === '14102011') {
+      const validUsers = ['jdyadina', 'juandiegoyadina', 'adina', 'jdadina']
+      const validPasswords = ['14102011', '14112011', '141011', '141111']
+
+      // Comprobación de credenciales flexible y defensiva
+      if (validUsers.includes(cleanUser) && validPasswords.includes(cleanPass)) {
         localStorage.setItem('auth_15_aniversario', 'true')
         setTimeout(() => {
           setIsSubmitting(false)
           onUnlock()
-        }, 400)
+        }, 300)
       } else {
         setIsSubmitting(false)
-        if (cleanUser !== 'jdyadina' && cleanPass !== '14102011') {
+        if (!validUsers.includes(cleanUser) && !validPasswords.includes(cleanPass)) {
           setErrorMsg('Usuario y clave no coinciden. Revisa la pista si tienes dudas, amor.')
-        } else if (cleanUser !== 'jdyadina') {
+        } else if (!validUsers.includes(cleanUser)) {
           setErrorMsg('El usuario no es correcto. Recuerda quiénes somos los dos...')
         } else {
           setErrorMsg('Esa no es nuestra fecha secreta. Recuerda el día que empezó todo (DDMMAAAA).')
         }
       }
-    } catch (err) {
+    } catch {
       setIsSubmitting(false)
       setErrorMsg('Ocurrió un error al verificar los datos. Inténtalo nuevamente.')
     }
