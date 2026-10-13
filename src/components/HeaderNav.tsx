@@ -73,13 +73,27 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
           <button
             type="button"
             onClick={onToggleSound}
-            title={isSoundPlaying ? 'Silenciar melodía' : 'Reproducir música ambiental'}
-            className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-[#d4af37] border border-white/5 transition active:scale-95 cursor-pointer"
+            title={isSoundPlaying ? 'Pausar Stand by Me (Ben E. King)' : 'Reproducir Stand by Me (Ben E. King)'}
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border transition active:scale-95 cursor-pointer text-xs font-medium ${
+              isSoundPlaying
+                ? 'bg-[#d4af37]/15 border-[#d4af37]/50 text-[#f5d77f] shadow-[0_0_15px_rgba(212,175,55,0.2)]'
+                : 'bg-white/5 border-white/10 text-white/40 hover:text-white/70'
+            }`}
           >
             {isSoundPlaying ? (
-              <Music className="w-4 h-4 animate-bounce" />
+              <>
+                <Music className="w-3.5 h-3.5 text-[#d4af37] animate-pulse" />
+                <span className="hidden sm:inline text-[11px] text-[#f5dfb8] tracking-wide">
+                  Stand by Me
+                </span>
+              </>
             ) : (
-              <VolumeX className="w-4 h-4 text-white/40" />
+              <>
+                <VolumeX className="w-3.5 h-3.5 text-white/40" />
+                <span className="hidden sm:inline text-[11px] text-white/40">
+                  Música
+                </span>
+              </>
             )}
           </button>
 

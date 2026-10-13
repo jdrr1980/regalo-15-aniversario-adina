@@ -47,10 +47,16 @@ export const App: React.FC = () => {
 
   /**
    * Desbloquea la aplicación tras ingresar usuario y contraseña correctos.
+   * Inicia automáticamente la banda sonora "Ben E. King - Stand by Me".
    */
   const handleUnlock = (): void => {
     setIsAuthenticated(true)
     playChimeNote(523.25, 1.2)
+    startAmbientMelody().then((started) => {
+      if (started) {
+        setIsSoundPlaying(true)
+      }
+    })
   }
 
   /**

@@ -1,10 +1,10 @@
 /**
- * Utilidad de audio atmosférico y efectos sonoros mediante Web Audio API nativa.
- * No depende de descargas externas y garantiza compatibilidad en navegadores móviles.
+ * Utilidad de audio atmosférico y banda sonora para el 15 Aniversario.
+ * Incorpora la reproducción de "Ben E. King - Stand by Me" y efectos sonoros con Web Audio API.
  */
 
 let audioCtx: AudioContext | null = null
-let melodyInterval: number | null = null
+let standByMeAudio: HTMLAudioElement | null = null
 
 /**
  * Obtiene o inicializa el contexto de audio del navegador de forma defensiva.
@@ -14,7 +14,9 @@ let melodyInterval: number | null = null
 function getAudioContext(): AudioContext | null {
   try {
     if (!audioCtx) {
-      const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext
+      const AudioContextClass =
+        window.AudioContext ||
+        (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext
       audioCtx = new AudioContextClass()
     }
     if (audioCtx.state === 'suspended') {
@@ -58,30 +60,68 @@ export function playChimeNote(freq: number, duration: number = 1.2): void {
 }
 
 /**
- * Inicia una melodía suave y continua de fondo (caja de música romántica).
+ * Obtiene o inicializa la pista de audio de "Ben E. King - Stand by Me".
+ *
+ * @returns {HTMLAudioElement | null} Elemento de audio preparado.
  */
-export function startAmbientMelody(): void {
-  stopAmbientMelody()
-  const ctx = getAudioContext()
-  if (!ctx) return
-
-  // Notas mágicas tipo arpa / caja de música (A minor / Pentatónica mágica)
-  const notes = [440, 523.25, 659.25, 783.99, 880, 659.25, 523.25, 587.33]
-  let step = 0
-
-  playChimeNote(notes[0], 1.5)
-  melodyInterval = window.setInterval(() => {
-    step = (step + 1) % notes.length
-    playChimeNote(notes[step], 1.4)
-  }, 1200)
+function getStandByMeAudio(): HTMLAudioElement | null {
+  try {
+    if (!standByMeAudio && typeof Audio !== 'undefined') {
+      standByMeAudio = new Audio('/audio/stand_by_me.mp3')
+      standByMeAudio.loop = true
+      standByMeAudio.volume = 0.65
+      standByMeAudio.preload = 'auto'
+    }
+    return standByMeAudio
+  } catch {
+    return null
+  }
 }
 
 /**
- * Detiene la música ambiental.
+ * Inicia la reproducción de "Ben E. King - Stand by Me" como banda sonora romántica.
+ *
+ * @returns {Promise<boolean>} Indica si la reproducción inició con éxito.
+ */
+export async function startAmbientMelody(): Promise<boolean> {
+  const audio = getStandByMeAudio()
+  if (!audio) return false
+
+  try {
+    audio.currentTime = 0
+    await audio.play()
+    return true
+  } catch {
+    // Si el navegador bloquea autoplay sin gesto previo, capturamos limpiamente
+    return false
+  }
+}
+
+/**
+ * Detiene la reproducción de "Stand by Me".
  */
 export function stopAmbientMelody(): void {
-  if (melodyInterval !== null) {
-    clearInterval(melodyInterval)
-    melodyInterval = null
+  const audio = getStandByMeAudio()
+  if (audio) {
+    try {
+      audio.pause()
+    } catch {
+      // Ignorar de forma defensiva
+    }
   }
+}
+
+/**
+ * Alterna la reproducción de la música.
+ *
+ * @param {boolean} currentlyPlaying - Estado actual de reproducción.
+ * @returns {Promise<boolean>} Nuevo estado de reproducción.
+ */
+export async function toggleAmbientMelody(currentlyPlaying: boolean): Promise<boolean> {
+  if (currentlyPlaying) {
+    stopAmbientMelody()
+    return false
+  }
+  const started = await startAmbientMelody()
+  return started
 }

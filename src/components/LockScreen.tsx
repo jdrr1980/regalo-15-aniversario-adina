@@ -23,16 +23,17 @@ export const LockScreen: React.FC<LockScreenProps> = ({ onUnlock }) => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
   const [isCurtainOpening, setIsCurtainOpening] = useState<boolean>(false)
 
-  // Valores para el efecto 3D Tilt de la tarjeta de invitación real
+  // Valores para el efecto 3D Tilt sutil y templado de la tarjeta
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
-  const springX = useSpring(mouseX, { stiffness: 120, damping: 20 })
-  const springY = useSpring(mouseY, { stiffness: 120, damping: 20 })
+  const springX = useSpring(mouseX, { stiffness: 60, damping: 30 })
+  const springY = useSpring(mouseY, { stiffness: 60, damping: 30 })
 
-  const rotateX = useTransform(springY, [-0.5, 0.5], [7, -7])
-  const rotateY = useTransform(springX, [-0.5, 0.5], [-7, 7])
-  const glareX = useTransform(springX, [-0.5, 0.5], ['0%', '100%'])
-  const glareY = useTransform(springY, [-0.5, 0.5], ['0%', '100%'])
+  // Rango de inclinación sutil (1.5 grados máx) para máxima estabilidad y elegancia
+  const rotateX = useTransform(springY, [-0.5, 0.5], [1.5, -1.5])
+  const rotateY = useTransform(springX, [-0.5, 0.5], [-1.5, 1.5])
+  const glareX = useTransform(springX, [-0.5, 0.5], ['20%', '80%'])
+  const glareY = useTransform(springY, [-0.5, 0.5], ['20%', '80%'])
 
   // Partículas de polvo de oro deterministas para animación suave
   const goldParticles = useMemo(

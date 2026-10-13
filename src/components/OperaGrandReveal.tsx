@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
 import confetti from 'canvas-confetti'
 import { Sparkles, Clock, Check, Send, ExternalLink, Heart } from 'lucide-react'
-import { SHOW_SESSIONS } from '../data/storyData'
+import { SHOW_SESSIONS, JUAN_DIEGO_PHONE } from '../data/storyData'
 import { GoldenTicket } from './GoldenTicket'
 import type { ShowSession } from '../types'
 
@@ -55,11 +55,14 @@ export const OperaGrandReveal: React.FC<OperaGrandRevealProps> = ({ onSessionSel
     }
   }
 
-  // Enlace para WhatsApp con mensaje directo a Juan Diego
+  // Enlace para WhatsApp con mensaje directo al chat de Juan Diego
   const whatsappMessage = encodeURIComponent(
     `¡Mi amor! Ya he resuelto las pistas de nuestro 15 aniversario 🎭🌹 Me encantaría que vayamos a ver El Fantasma de la Ópera el ${selectedSession.day} (${selectedSession.dateLabel}) a las ${selectedSession.time} en el Palacio de Congresos. ¡Saca nuestras entradas ya!`
   )
-  const whatsappUrl = `https://api.whatsapp.com/send?text=${whatsappMessage}`
+  const cleanPhone = JUAN_DIEGO_PHONE.trim().replace(/[^0-9]/g, '')
+  const whatsappUrl = cleanPhone
+    ? `https://api.whatsapp.com/send?phone=${cleanPhone}&text=${whatsappMessage}`
+    : `https://api.whatsapp.com/send?text=${whatsappMessage}`
 
   return (
     <section className="relative w-full max-w-4xl mx-auto my-16 px-4 sm:px-6 text-center select-none">
