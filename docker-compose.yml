@@ -9,5 +9,11 @@ services:
       - "8085:80"
     environment:
       - NODE_ENV=production
+    networks:
+      - proxy_net
     labels:
       - "com.portainer.stack.name=regalo-adina-15-aniversario"
+
+networks:
+  proxy_net:
+    external: true
