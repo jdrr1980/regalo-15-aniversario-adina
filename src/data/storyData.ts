@@ -24,13 +24,13 @@ export const STORY_STAGES: StoryStage[] = [
     photos: [
       {
         url: '/photos/foto_01_pilar_2011.jpg',
-        caption: 'Plaza del Pilar, Octubre de 2011',
-        alt: 'Foto juntos en la Plaza del Pilar durante las fiestas de 2011',
+        caption: 'Pilares 2011, nuestras miradas cómplices',
+        alt: 'Juan Diego y Adina mirándose con amor en las fiestas del Pilar',
       },
       {
         url: '/photos/foto_02_pilar_2011.jpg',
         caption: 'Nuestras primeras sonrisas juntos',
-        alt: 'Primeros recuerdos juntos en 2011',
+        alt: 'Juan Diego y Adina abrazados y sonrientes en 2011',
       },
     ],
     clue: {
@@ -43,18 +43,18 @@ export const STORY_STAGES: StoryStage[] = [
     id: 2,
     year: '2011 — 2012',
     title: 'Primeras Escapadas y Cómplices',
-    subtitle: 'Fin de Semana Sorpresa y Aventuras Compartidas',
-    description: 'Aquel fin de semana sorpresa de diciembre, nuestras primeras escapadas y tantas risas que confirmaron que juntos cualquier destino se convertía en una fiesta.',
+    subtitle: 'Teruel y Aventuras Compartidas',
+    description: 'Nuestras primeras escapadas por carretera, las risas interminables y descubrir que cada viaje a tu lado confirmaba que estábamos hechos el uno para el otro.',
     photos: [
       {
-        url: '/photos/foto_03_sorpresa_2011.jpg',
-        caption: 'Fin de semana sorpresa, Diciembre 2011',
-        alt: 'Escapada sorpresa juntos a finales de 2011',
+        url: '/photos/foto_03_viaje_2012.jpg',
+        caption: 'Escapada en la carretera juntos',
+        alt: 'Juan Diego y Adina sonriendo juntos dentro del coche',
       },
       {
         url: '/photos/foto_04_teruel_2012.jpg',
-        caption: 'Celebrando el amor, Febrero 2012',
-        alt: 'Celebración y viaje en 2012',
+        caption: 'Teruel es Enamorarte, Febrero 2012',
+        alt: 'Juan Diego y Adina juntos frente al letrero de Teruel es Enamorarte',
       },
     ],
     clue: {
@@ -67,18 +67,18 @@ export const STORY_STAGES: StoryStage[] = [
     id: 3,
     year: '2013 — 2014',
     title: 'Cruzando Fronteras y Sumando Años',
-    subtitle: 'Rumanía, Cumpleaños y Crecimiento Mutuo',
-    description: 'Viajar a tus raíces en Rumanía, conocer nuevos mundos y celebrar cada cumpleaños a tu lado. 15 años construidos momento a momento, superando retos y celebrando cada alegría.',
+    subtitle: 'Rumanía, Rosas y Crecimiento Mutuo',
+    description: 'Viajar a tus raíces en Rumanía, conocer nuevos mundos y celebrar cada momento a tu lado. 15 años construidos paso a paso, superando retos y celebrando cada alegría juntos.',
     photos: [
       {
         url: '/photos/foto_08_rumania_2013.jpg',
-        caption: 'Rumanía, Agosto de 2013',
-        alt: 'Viaje a Rumanía en verano de 2013',
+        caption: 'Rumbo a Rumanía, despega la aventura',
+        alt: 'Juan Diego y Adina sonrientes haciéndose un selfie en el aeropuerto',
       },
       {
-        url: '/photos/foto_09_cumple_2014.jpg',
-        caption: 'Cumpleaños juntos, Enero de 2014',
-        alt: 'Celebrando el cumpleaños juntos en 2014',
+        url: '/photos/foto_09_rosas_2013.jpg',
+        caption: 'Entre rosas rojas en Rumanía, Agosto 2013',
+        alt: 'Juan Diego y Adina juntos sonriendo frente a un jardín de rosas rojas',
       },
     ],
     clue: {
@@ -92,22 +92,22 @@ export const STORY_STAGES: StoryStage[] = [
     year: '2015',
     title: 'París y la Ciudad de la Luz',
     subtitle: 'Mayo de 2015 — El Misterio se Concreta',
-    description: 'Pasear por París, el Louvre, la Torre Eiffel y las grandes avenidas frente a la legendaria Ópera Garnier. La ciudad de los misterios románticos que hoy cobra más sentido que nunca.',
+    description: 'Pasear por París y Londres, sus grandes avenidas frente a los teatros y la legendaria Ópera Garnier. La ciudad de los misterios románticos que hoy cobra más sentido que nunca.',
     photos: [
       {
         url: '/photos/foto_05_paris_2015.jpg',
-        caption: 'París, Mayo de 2015',
-        alt: 'Enamorados en París, mayo de 2015',
+        caption: 'Juntos en nuestro viaje a París y Londres',
+        alt: 'Juan Diego y Adina posando juntos y sonrientes',
       },
       {
         url: '/photos/foto_06_paris_2015.jpg',
-        caption: 'Recorriendo los rincones de París',
-        alt: 'Paseo por las calles de París en 2015',
+        caption: 'Recorriendo juntos cada estación',
+        alt: 'Juan Diego y Adina con chaquetas de cuero en el andén',
       },
       {
         url: '/photos/foto_07_paris_2015.jpg',
-        caption: 'Momentos inolvidables frente al Sena',
-        alt: 'Junto al Sena en nuestro viaje a París',
+        caption: 'Frente al gran teatro musical',
+        alt: 'Juan Diego y Adina en selfie de pareja frente a la marquesina teatral',
       },
     ],
     clue: {
